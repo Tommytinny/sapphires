@@ -1,0 +1,5 @@
+node_modules
+.env.local
+SUPERBASE_SETUP.md
+db/seed_admin.sql
+db/seed_data.sql
