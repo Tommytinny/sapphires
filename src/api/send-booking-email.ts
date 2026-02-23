@@ -19,7 +19,7 @@ export default async function handler(req: any, res: any) {
   try {
     // Send email to admin via Resend
     const { data, error } = await resend.emails.send({
-      from: 'bookings@sapphires.com',
+      from: 'bookings@sapphiresraid.com',
       to: ADMIN_EMAIL,
       subject: `New Booking Request: ${projectName}`,
       html: `
