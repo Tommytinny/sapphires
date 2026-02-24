@@ -14,12 +14,12 @@ const BookingSection = () => {
   const [submitError, setSubmitError] = useState('');
 
   const packages = [
-    { value: '12hrs', label: '1 Day (12 hours)' },
-    { value: '24hrs', label: '2 Days (24 hours)' },
-    { value: '36hrs', label: '3 Days (36 hours)' },
-    { value: '48hrs', label: '4 Days (48 hours)' },
-    { value: '60hrs', label: '5 Days (60 hours)' },
-    { value: '168hrs', label: '1 Week (168 hours)' }
+    { value: '12hrs', label: '1 Day (12 hours) - $50' },
+    { value: '24hrs', label: '2 Days (24 hours) - (negotiable)' },
+    { value: '36hrs', label: '3 Days (36 hours) - (negotiable)' },
+    { value: '48hrs', label: '4 Days (48 hours) - (negotiable)' },
+    { value: '60hrs', label: '5 Days (60 hours) - (negotiable)' },
+    { value: '168hrs', label: '1 Week (168 hours) - (negotiable)' }
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
