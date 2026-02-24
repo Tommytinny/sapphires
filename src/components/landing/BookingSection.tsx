@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { supabase } from '../../lib/supabase';
 
 const BookingSection = () => {
   const [formData, setFormData] = useState({
@@ -13,12 +14,12 @@ const BookingSection = () => {
   const [submitError, setSubmitError] = useState('');
 
   const packages = [
-    { value: '12hrs', label: '1 Day (12 hours) - $80' },
-    { value: '24hrs', label: '2 Days (24 hours) - (negotiable)' },
-    { value: '36hrs', label: '3 Days (36 hours) - (negotiable)' },
-    { value: '48hrs', label: '4 Days (48 hours) - (negotiable)' },
-    { value: '60hrs', label: '5 Days (60 hours) - (negotiable)' },
-    { value: '168hrs', label: '1 Week (168 hours) - (negotiable)' }
+    { value: '1 Day (12 hours) - $80', label: '1 Day (12 hours) - $80' },
+    { value: '2 Days (24 hours) - (negotiable)', label: '2 Days (24 hours) - (negotiable)' },
+    { value: '3 Days (36 hours) - (negotiable)', label: '3 Days (36 hours) - (negotiable)' },
+    { value: '4 Days (48 hours) - (negotiable)', label: '4 Days (48 hours) - (negotiable)' },
+    { value: '5 Days (60 hours) - (negotiable)', label: '5 Days (60 hours) - (negotiable)' },
+    { value: '1 Week (168 hours) - (negotiable)', label: '1 Week (168 hours) - (negotiable)' }
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -57,7 +58,23 @@ const BookingSection = () => {
       }*/}
 
       // Call API endpoint to send email to admin
-      const res = await fetch(
+
+      /*const { data, error } = await supabase.functions.invoke('send-booking', {
+        body: { projectName: formData.projectName,
+      twitterHandle: formData.twitterHandle,
+      communityLink: formData.communityLink,
+      package: formData.package,
+      contact: formData.contact, },
+      });
+
+      if (error) {
+        console.error('Submission error:', error);
+        setSubmitError('An unexpected error occurred. Please try again.');
+      } else {
+        setSubmitMessage('Booking submitted successfully! Admin will contact you soon.');
+        setFormData({ projectName: '', twitterHandle: '', communityLink: '', package: '', contact: '' });
+      }
+      */const res = await fetch(
   import.meta.env.VITE_SUPABASE_FUNCTION_URL,
   {
     method: 'POST',
