@@ -38,7 +38,7 @@ const BookingSection = () => {
 
     try {
       // Insert booking into Supabase
-      const { error } = await supabase
+      {/*const { error } = await supabase
         .from('bookings')
         .insert([{
           project_name: formData.projectName,
@@ -55,7 +55,7 @@ const BookingSection = () => {
         setSubmitError('Failed to save booking. Please try again.');
         setIsSubmitting(false);
         return;
-      }
+      }*/}
 
       // Call API endpoint to send email to admin
       const res = await fetch('/api/send-booking-email', {

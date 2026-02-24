@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const ADMIN_EMAIL = process.env.VITE_ADMIN_EMAIL || 'admin@example.com';
+const resend = new Resend(import.meta.env.RESEND_API_KEY);
+const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL || 'admin@example.com';
 
 export default async function handler(req: any, res: any) {
   // Only allow POST
@@ -19,7 +19,7 @@ export default async function handler(req: any, res: any) {
   try {
     // Send email to admin via Resend
     const { data, error } = await resend.emails.send({
-      from: 'bookings@sapphires.com',
+      from: 'bookings@sapphiresraid.com',
       to: ADMIN_EMAIL,
       subject: `New Booking Request: ${projectName}`,
       html: `

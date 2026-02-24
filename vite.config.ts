@@ -10,8 +10,6 @@ export default defineConfig(() => ({
     hmr: {
       overlay: false,
     },
-    allowedHosts: ['polite-window.outray.app', 'localhost', '127.0.0.1'],
-    allowedPorts: [8080],
   },
   plugins: [react()].filter(Boolean),
   resolve: {
@@ -19,4 +17,5 @@ export default defineConfig(() => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: '/',
 }));
