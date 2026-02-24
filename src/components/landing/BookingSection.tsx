@@ -81,13 +81,13 @@ const BookingSection = () => {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-      'apikey': import.meta.env.VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY,
+      'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY,
     },
     body: JSON.stringify({
       projectName: formData.projectName,
       twitterHandle: formData.twitterHandle,
       communityLink: formData.communityLink,
-      package: formData.package,
+      packages: formData.package,
       contact: formData.contact,
     }),
   }
