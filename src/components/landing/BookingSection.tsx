@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { supabase } from '../../lib/supabase';
 
 const BookingSection = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +13,7 @@ const BookingSection = () => {
   const [submitError, setSubmitError] = useState('');
 
   const packages = [
-    { value: '12hrs', label: '1 Day (12 hours) - $50' },
+    { value: '12hrs', label: '1 Day (12 hours) - $80' },
     { value: '24hrs', label: '2 Days (24 hours) - (negotiable)' },
     { value: '36hrs', label: '3 Days (36 hours) - (negotiable)' },
     { value: '48hrs', label: '4 Days (48 hours) - (negotiable)' },
@@ -58,17 +57,22 @@ const BookingSection = () => {
       }*/}
 
       // Call API endpoint to send email to admin
-      const res = await fetch('/api/send-booking-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          projectName: formData.projectName,
-          twitterHandle: formData.twitterHandle,
-          communityLink: formData.communityLink,
-          package: formData.package,
-          contact: formData.contact,
-        }),
-      });
+      const res = await fetch(
+  import.meta.env.VITE_SUPABASE_FUNCTION_URL,
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      projectName: formData.projectName,
+      twitterHandle: formData.twitterHandle,
+      communityLink: formData.communityLink,
+      package: formData.package,
+      contact: formData.contact,
+    }),
+  }
+);
 
       if (!res.ok) {
         console.warn('Email notification failed (booking saved)', await res.text());
