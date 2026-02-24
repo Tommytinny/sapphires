@@ -59,11 +59,11 @@ const BookingSection = () => {
 
       // Call API endpoint to send email to admin
 
-      /*const { data, error } = await supabase.functions.invoke('send-booking', {
+      const { data, error } = await supabase.functions.invoke('send-booking', {
         body: { projectName: formData.projectName,
       twitterHandle: formData.twitterHandle,
       communityLink: formData.communityLink,
-      package: formData.package,
+      packages: formData.package,
       contact: formData.contact, },
       });
 
@@ -74,7 +74,7 @@ const BookingSection = () => {
         setSubmitMessage('Booking submitted successfully! Admin will contact you soon.');
         setFormData({ projectName: '', twitterHandle: '', communityLink: '', package: '', contact: '' });
       }
-      */const res = await fetch(
+      /*const res = await fetch(
   import.meta.env.VITE_SUPABASE_FUNCTION_URL,
   {
     method: 'POST',
@@ -98,7 +98,7 @@ const BookingSection = () => {
       } else {
         setSubmitMessage('Booking submitted successfully! Admin will contact you soon.');
         setFormData({ projectName: '', twitterHandle: '', communityLink: '', package: '', contact: '' });
-      }
+      }*/
     } catch (err) {
       console.error('Submission error:', err);
       setSubmitError('An unexpected error occurred. Please try again.');

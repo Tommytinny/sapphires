@@ -1,20 +1,31 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+}
+
 serve(async (req) => {
+  // ✅ Handle preflight request
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders })
+  }
+
   if (req.method !== "POST") {
     return new Response(
       JSON.stringify({ error: "Method not allowed" }),
-      { status: 405 }
+      { status: 405, headers: corsHeaders }
     )
   }
 
   try {
-    const { projectName, twitterHandle, communityLink, package: pkg, contact } = await req.json()
+    const { projectName, twitterHandle, communityLink, packages, contact } = await req.json()
 
-    if (!projectName || !twitterHandle || !communityLink || !pkg || !contact) {
+    if (!projectName || !twitterHandle || !communityLink || !packages || !contact) {
       return new Response(
         JSON.stringify({ error: "Missing required fields" }),
-        { status: 400 }
+        { status: 400, headers: corsHeaders }
       )
     }
 
@@ -24,7 +35,7 @@ serve(async (req) => {
 Project: ${projectName}
 Twitter: ${twitterHandle}
 Community: ${communityLink}
-Package: ${pkg}
+Package: ${packages}
 Contact: ${contact}
 `
 
@@ -45,19 +56,19 @@ Contact: ${contact}
       console.error("Telegram error:", errorData)
 
       return new Response(
-        JSON.stringify({ error: "Failed to send Telegram message" }),
-        { status: 500 }
+        JSON.stringify({ error: "Telegram failed" }),
+        { status: 500, headers: corsHeaders }
       )
     }
 
     return new Response(
       JSON.stringify({ success: true }),
-      { status: 200 }
+      { status: 200, headers: corsHeaders }
     )
   } catch (err) {
     return new Response(
       JSON.stringify({ error: err.message }),
-      { status: 500 }
+      { status: 500, headers: corsHeaders }
     )
   }
 })
