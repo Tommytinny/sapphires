@@ -164,7 +164,8 @@ const FAQ = () => {
           <p className="text-gray-600 font-unbounded mb-6">
             Get in touch with our team for personalized support
           </p>
-          <button
+          <a
+            href="https://x.com/sapphiresinc"
             className="px-8 py-3 rounded-lg font-semibold font-unbounded transition-all duration-300 shadow-md hover:shadow-lg"
             style={{
               backgroundColor: '#117cb4',
@@ -174,7 +175,7 @@ const FAQ = () => {
             onMouseLeave={(e) => {e.currentTarget.style.backgroundColor = '#117cb4'}}
           >
             Contact Us
-          </button>
+          </a>
         </div>
       </div>
     </section>
