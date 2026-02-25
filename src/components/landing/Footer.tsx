@@ -15,7 +15,7 @@ const Footer = () => {
   `;
 
   const socialLinks = [
-    { name: 'Twitter', icon: 'X', url: '#' },
+    { name: 'Twitter', icon: 'X', url: 'https://x.com/sapphiresinc' },
     { name: 'Telegram', icon: 'TG', url: '#' },
     { name: 'Discord', icon: 'DC', url: '#' }
   ];
