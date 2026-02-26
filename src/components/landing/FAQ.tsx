@@ -75,10 +75,6 @@ const FAQ = () => {
       answer: 'Absolutely! We can customize raid sessions based on your specific needs. You can choose the duration, target tweets, and engagement goals. Contact us to discuss your custom requirements.'
     },
     {
-      question: 'What\'s the refund policy?',
-      answer: 'We offer a 100% satisfaction guarantee. If you\'re not satisfied with the results within the specified timeframe, we\'ll work with you to improve or provide a full refund.'
-    },
-    {
       question: 'How do I track my raid session progress?',
       answer: 'After booking, you\'ll receive real-time updates on engagement metrics. We provide detailed reports showing likes, retweets, comments, and trending position throughout your raid session.'
     }
